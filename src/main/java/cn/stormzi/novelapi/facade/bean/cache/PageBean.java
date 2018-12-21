@@ -1,5 +1,7 @@
 package cn.stormzi.novelapi.facade.bean.cache;
 
+import java.util.Date;
+
 /**
  * @program: novelapi
  * @description:
@@ -9,7 +11,8 @@ package cn.stormzi.novelapi.facade.bean.cache;
 
 
 public class PageBean {
-    protected String detail,title,author,nextUrl,lastUrl,url;
+    protected String detail,title,author,nextUrl,lastUrl,url,website,bookUrl;
+    private Date createtime;
 
     public String getDetail() {
         return detail;
@@ -57,5 +60,29 @@ public class PageBean {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public String getBookUrl() {
+        return bookUrl;
+    }
+
+    public void setBookUrl(String bookUrl) {
+        this.bookUrl = bookUrl;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 }

@@ -1,13 +1,12 @@
 package cn.stormzi.novelapi.facade.cache;
 
-import cn.stormzi.novelapi.facade.bean.analysis.UrlBean;
 import cn.stormzi.novelapi.facade.bean.cache.disruptor.IntElement;
-import cn.stormzi.novelapi.facade.bean.cache.disruptor.UrlBeanElement;
 import cn.stormzi.novelapi.facade.bean.cache.disruptor.ValueElement;
 import com.lmax.disruptor.*;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 
+import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
 /**
@@ -18,49 +17,56 @@ import java.util.concurrent.ThreadFactory;
  **/
 
 
-public abstract class DisruptorFacade<T> {
+public abstract class DisruptorFacade<T> implements MQOperator<T>{
 
-    protected EventHandler<ValueElement<T>> handler = generateHandler();
+    protected EventHandler<ValueElement<T>> handler;
 
     protected Disruptor<ValueElement> disruptor = generateDisruptor();
     //buffer
     protected RingBuffer<ValueElement> ringBuffer;
 
-    public abstract void send(T data);
-
-    public void start() {
-        disruptor.start();
+    @Override
+    public void send(T data,int type){
+        long next = ringBuffer.next();
+        try {
+            ValueElement valueElement = ringBuffer.get(next);
+            valueElement.setValue(data);
+            valueElement.setType(type);
+        }finally {
+            ringBuffer.publish(next);
+        }
     }
 
-    protected abstract EventHandler<ValueElement<T>> generateHandler();
+    public void start() {
+        if (disruptor!=null)
+            disruptor.start();
+    }
+
+    public void close() {
+        if (disruptor!=null){
+            disruptor.shutdown();
+        }
+    }
+
+    private final static int buffersize = 128 * 128;
 
     protected abstract Disruptor<ValueElement> generateDisruptor();
 
-    private static int buffersize = 1024 * 1024;
 
-    public static Disruptor<IntElement> singleIntElement() {
-        EventFactory<IntElement> eventFactory = new EventFactory<IntElement>() {
+    protected EventHandler<ValueElement> generateHandler() {
+        return new EventHandler<ValueElement>() {
             @Override
-            public IntElement newInstance() {
-                return new IntElement();
+            public void onEvent(ValueElement urlBeanValueElement, long l, boolean b) throws Exception {
+                receiver(urlBeanValueElement);
             }
         };
-        ThreadFactory threadFactory = new ThreadFactory() {
-            @Override
-            public Thread newThread(Runnable r) {
-                return new Thread("disruptor IntElement" + r.toString());
-            }
-        };
-        WaitStrategy YIELDING_WAIT = new YieldingWaitStrategy();
-
-        return new Disruptor(eventFactory, buffersize, threadFactory, ProducerType.SINGLE, YIELDING_WAIT);
     }
 
     public static Disruptor<ValueElement> multiValueElement() {
-        EventFactory<UrlBeanElement> eventFactory = new EventFactory() {
+        EventFactory<ValueElement> eventFactory =new EventFactory<ValueElement>() {
             @Override
-            public UrlBeanElement newInstance() {
-                return new UrlBeanElement();
+            public ValueElement newInstance() {
+                return new ValueElement();
             }
         };
         ThreadFactory threadFactory = new ThreadFactory() {
@@ -72,6 +78,19 @@ public abstract class DisruptorFacade<T> {
         WaitStrategy YIELDING_WAIT = new YieldingWaitStrategy();
 
         return new Disruptor(eventFactory, buffersize, threadFactory, ProducerType.MULTI, YIELDING_WAIT);
+    }
+
+
+    @Deprecated
+    public static Disruptor<ValueElement> singleCachedThreadPool(){
+        EventFactory<ValueElement> eventFactory =new EventFactory<ValueElement>() {
+            @Override
+            public ValueElement newInstance() {
+                return new ValueElement();
+            }
+        };
+        WaitStrategy YIELDING_WAIT = new YieldingWaitStrategy();
+        return new Disruptor(eventFactory, buffersize, Executors.newCachedThreadPool(), ProducerType.MULTI, YIELDING_WAIT);
     }
 
 }

@@ -20,5 +20,5 @@ public abstract class ControllerBase  {
         return LoggerFactory.getLogger(ControllerBase.class);
     }
     public abstract String index(Map<String,String> map);
-    public abstract Map getPatternMap(String website);
+
 }

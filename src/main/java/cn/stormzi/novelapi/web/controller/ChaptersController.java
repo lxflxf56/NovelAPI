@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -19,10 +20,10 @@ import java.util.Map;
  * @create: 2018-12-05
  **/
 
-@Controller
-@RequestMapping("/content")
-public class ContentController extends ControllerBase {
-    protected static final Logger logger = LoggerFactory.getLogger(ContentController.class);
+@RestController
+@RequestMapping("/Chapters")
+public class ChaptersController extends ControllerBase {
+    protected static final Logger logger = LoggerFactory.getLogger(ChaptersController.class);
 
 
     @RequestMapping(value="/index")
@@ -32,10 +33,6 @@ public class ContentController extends ControllerBase {
         return JSON.toJSONString(new ErrorCode("404","No support Now"));
     }
 
-    @Override
-    public Map getPatternMap(String website) {
-        return null;
-    }
 
 
 }

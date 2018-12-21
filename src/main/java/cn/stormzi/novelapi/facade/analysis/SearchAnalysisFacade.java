@@ -2,11 +2,13 @@ package cn.stormzi.novelapi.facade.analysis;
 
 import cn.stormzi.novelapi.facade.bean.cache.SearchBean;
 
-public interface SearchAnalysisFacade {
-    SearchBean searchFromCacheByBookname();
-    SearchBean searchFromCacheByAuthor();
-    SearchBean searchFromWebsiteByBookname(String bookname,String website);
-    SearchBean searchFromWebsiteByAuthor(String bookname,String website);
+import java.util.Set;
 
+public interface SearchAnalysisFacade {
+    String searchFromCacheByBookname(String bookname);
+    String searchFromCacheByAuthor(String author);
+    SearchBean searchFromWebsiteByBookname(String bookname,String website);
+    String searchOtherBook(String bookname);
+    Set getAllWebsite();
 
 }

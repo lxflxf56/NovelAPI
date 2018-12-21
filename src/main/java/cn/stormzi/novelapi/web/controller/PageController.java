@@ -1,14 +1,18 @@
 package cn.stormzi.novelapi.web.controller;
 
+import cn.stormzi.novelapi.NovelapiApplication;
+import cn.stormzi.novelapi.facade.analysis.PageAnalysisFacade;
+import cn.stormzi.novelapi.facade.analysis.UrlAnalysisFacade;
+import cn.stormzi.novelapi.facade.bean.analysis.UrlBean;
+import cn.stormzi.novelapi.facade.bean.cache.PageBean;
 import cn.stormzi.novelapi.facade.bean.web.ErrorCode;
 import cn.stormzi.novelapi.web.ControllerBase;
 import com.alibaba.fastjson.JSON;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -19,22 +23,37 @@ import java.util.Map;
  * @create: 2018-12-05
  **/
 
-@Controller
+@RestController
 @RequestMapping("/page")
-public class PageController  extends ControllerBase {
+public class PageController extends ControllerBase {
 
 
+    @Autowired
+    UrlAnalysisFacade urlService;
 
-    @RequestMapping(value="/index")
+
+    PageAnalysisFacade pageService;
+
+    @RequestMapping(value = "/index")
     @ResponseBody
-    public String index(@RequestBody Map jsonMap){
-        logger.debug("/page/index json:{}",jsonMap);
-
-        return JSON.toJSONString(new ErrorCode("404","No support Now"));
+    public String index(@RequestBody Map jsonMap) {
+        logger.debug("/page/index json:{}", jsonMap);
+        String baseurl = (String) jsonMap.get("baseurl");
+        UrlBean urlBean = urlService.extractLink(baseurl);
+        if (null == urlBean) {
+            return JSON.toJSONString(new ErrorCode("404", "请求链接不合法"));
+        }
+        PageBean pageBean = null;
+        if (NovelapiApplication.useCache) {
+            return pageService.getPageFromCache(urlBean);
+        } else {
+            pageBean = pageService.getPageFromWeb(urlBean);
+            pageService.savePageIntoCache(pageBean);
+        }
+        if (pageBean == null) {
+            return JSON.toJSONString(new ErrorCode("404", "No support Now"));
+        }
+        return JSON.toJSONString(pageBean);
     }
 
-    @Override
-    public Map getPatternMap(String website) {
-        return null;
-    }
 }

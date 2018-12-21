@@ -13,12 +13,13 @@ import cn.stormzi.novelapi.facade.bean.cache.PageBean;
 
 public interface PageProducerFacade {
 
-    boolean filter(UrlBean urlBean);
+
+    //void addQueue(String link);
 
     void addQueue(UrlBean urlBean);
 
-    boolean filter(PageBean pageBean);
-
     void addQueue(PageBean pageBean);
+
+    void addQueue(String json);
 
 }

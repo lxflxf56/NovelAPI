@@ -1,8 +1,8 @@
 package cn.stormzi.novelapi.facade.cache;
 
-import cn.stormzi.novelapi.facade.bean.cache.ContentBean;
+import cn.stormzi.novelapi.facade.bean.analysis.UrlBean;
+import cn.stormzi.novelapi.facade.bean.cache.ChaptersBean;
 import cn.stormzi.novelapi.facade.bean.cache.PageBean;
-import cn.stormzi.novelapi.facade.bean.cache.SearchBean;
 
 /**
  * @program: novelapi
@@ -13,6 +13,8 @@ import cn.stormzi.novelapi.facade.bean.cache.SearchBean;
 
 
 public interface KeyFacade {
-    String createPageKey(PageBean pageBean);
-    String createContentKey(ContentBean contentBean);
+    long createPageKey(PageBean pageBean);
+    long createContentKey(ChaptersBean chaptersBean);
+    long createPageKey(UrlBean pageBean);
+    long createContentKey(UrlBean contentBean);
 }

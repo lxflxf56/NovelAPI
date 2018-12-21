@@ -2,6 +2,7 @@ package cn.stormzi.novelapi.service.analysis;
 
 import cn.stormzi.novelapi.facade.analysis.UrlAnalysisFacade;
 import cn.stormzi.novelapi.facade.bean.analysis.UrlBean;
+import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,6 +17,7 @@ import java.util.Map;
  **/
 
 
+@Service("urlService")
 public class UrlService implements UrlAnalysisFacade {
     private static Map reallywebsite;
 

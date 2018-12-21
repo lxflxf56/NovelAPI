@@ -11,10 +11,14 @@ import java.util.List;
 
 
 public class SearchBean {
-    protected List<NovelItem> novelItems;
+    protected List<ChaptersBean> novelItems;
 
-    public static class NovelItem{
-        private String contentUrl,imgUrl,author,title,description,lastestSection,website;
+
+    public List<ChaptersBean> getNovelItems() {
+        return novelItems;
     }
 
+    public void setNovelItems(List<ChaptersBean> novelItems) {
+        this.novelItems = novelItems;
+    }
 }

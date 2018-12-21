@@ -17,23 +17,21 @@ import java.io.IOException;
 
 public class HttpUtil {
     public static final String GET="GET",POST="POST",DELETE="DELETE",PUT="PUT";
-    public static final MediaType HEADER = MediaType.parse("application/json; charset=utf-8");
+    public static final MediaType HEADER = MediaType.parse("application/json;");
     protected static final Logger logger = LoggerFactory.getLogger(HttpUtil.class);
     private static OkHttpClient okHttpClient;
 
     public static String get(String url) throws IOException {
         String connect = connect(GET, url, null);
         return connect;
-
-
     }
 
     public static String post(String url) throws IOException {
         String connect = connect(POST, url, "{}");
         return connect;
-
-
     }
+
+
     public static String post(String url,String json) throws IOException {
         String connect = connect(POST, url, json);
         return connect;
@@ -59,6 +57,25 @@ public class HttpUtil {
     public static String delete(String url,String json) throws IOException {
         String connect = connect(DELETE, url, json);
         return connect;
+    }
+
+    public static void get(String url,Callback callback){
+        connect("get",url,null,callback);
+    }
+
+    public static void post(String url,String json,Callback callback){
+        connect("get",url,json,callback);
+    }
+
+    public static void connect(String method,String url,String json,Callback callback){
+        OkHttpClient okHttpClient = getOkHttpClient();
+        RequestBody body = null;
+        if (null!=json){
+            body = RequestBody.create(HEADER,json);
+        }
+        Response execute = null;
+        Request request=new Request.Builder().url(url).method(method,body).build();
+        okHttpClient.newCall(request).enqueue(callback);
     }
 
     public static String connect(String method,String url,String json) throws IOException {
