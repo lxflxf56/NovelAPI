@@ -32,7 +32,7 @@ public class SearchController extends ControllerBase {
     @Autowired
     ChaptersProducerFacade chaptersProducerService;
 
-    @RequestMapping("/search.html")
+    @RequestMapping(value = "index")
     @ResponseBody
     @Override
     public String index(@RequestBody Map<String, String> map) {
@@ -49,12 +49,15 @@ public class SearchController extends ControllerBase {
             return searchService.searchFromCacheByAuthor(author);
         } else {
             SearchBean searchBean = searchService.searchFromWebsiteByBookname(searchname, websitename);
-            chaptersProducerService.addQueue(searchBean.getNovelItems());
-            return JSON.toJSONString(searchBean);
+            if (searchBean!=null){
+                chaptersProducerService.addQueue(searchBean.getNovelItems());
+                return JSON.toJSONString(searchBean);
+            }
         }
+        return JSON.toJSONString(new ErrorCode("404", "请求错误"));
     }
 
-    @RequestMapping(value = "/search.html")
+    @RequestMapping(value = "/website.json")
     @ResponseBody
     public String listWebsite() {
         Set allWebsite = searchService.getAllWebsite();

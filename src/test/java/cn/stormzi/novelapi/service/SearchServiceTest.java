@@ -1,5 +1,6 @@
 package cn.stormzi.novelapi.service;
 
+import cn.stormzi.novelapi.service.analysis.SearchService;
 import cn.stormzi.novelapi.util.http.HttpUtil;
 import com.alibaba.fastjson.JSON;
 import org.jsoup.Jsoup;
@@ -29,19 +30,20 @@ import java.util.regex.Pattern;
 //@SpringBootTest
 public class SearchServiceTest {
 
+    @Test
     public void sear()  {
         String bookname = "如意";
         String gbk = null;
         try {
             gbk = URLEncoder.encode(bookname, "gbk");
-            String searchUrl = String.format("https://www.i7wx.com/modules/article/search.php?searchtype=articlename&searchkey=%s", gbk);
+            String searchUrl = String.format("http://www.i7wx.com/modules/article/search.php?searchtype=articlename&searchkey=%s", gbk);
             System.out.println(searchUrl);
-            Document document = Jsoup.connect(searchUrl).post();
-            String s1 = HttpUtil.get(searchUrl);
+            Document document = Jsoup.connect(searchUrl).get();
+            //String s1 = HttpUtil.get(searchUrl);
             //Document document = Jsoup.parse(s1,"gbk");
             String[] s = "@tr .odd 1 ".split(" ");
             List result = new ArrayList();
-            itrElement(0, s, document.body().children(), result);
+            SearchService.itrElement(0, s, document.body().children(), result);
             System.out.println(result);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -53,48 +55,7 @@ public class SearchServiceTest {
     }
 
 
-    public void itrElement(int i, String[] s, Elements element, List result) {
-        if (element.isEmpty()) {
-            return;
-        }
-        if (i >= s.length) {
-            result.add(element.get(0).html());
-            return;
-        }
 
-        String str = s[i];
-        if (isNum(str.charAt(0))) {
-            //result.add(element.get(0).html());
-            Element element1 = element.get(str.charAt(0));
-            if (str.length() > 1) {// 0[attr]
-                str = str.substring(1, str.length());
-                String attr = element1.attr(str);
-                result.add(attr);
-            }else {
-                result.add(element1.html());
-            }
-        } else if (str.charAt(0) == '[') {
-            String attr = element.attr(str);
-            result.add(attr);
-        } else if (str.charAt(0) == '@') {
-            str = str.substring(1, str.length());
-            Elements select = element.select(str);
-            for (Element element1 : select) {
-                itrElement(i + 1, s, element1.children(), result);
-            }
-        } else {
-            itrElement(i + 1, s, element.select(str), result);
-        }
-
-    }
-
-
-    public static boolean isNum(char c) {
-        if (47 < c && c < 57) {
-            return true;
-        }
-        return false;
-    }
 
 
     public static String change(String tmp) {
@@ -117,7 +78,7 @@ public class SearchServiceTest {
             s = s.replace("abs:", "[") + "]";
         }
         s = s.replace(".", " .").replace("#", " #");
-        s = s.replace("@", "");
+        s = s.replace("@ ", "@");
         return s.trim();
     }
 

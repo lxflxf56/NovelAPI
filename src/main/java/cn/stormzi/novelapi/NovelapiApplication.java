@@ -34,7 +34,7 @@ public class NovelapiApplication {
     public static void init(){
         String s = null;
         try {
-            s = HttpUtil.get("https://gitee.com/sososdk/aikanyuedu/raw/master/normal.aks");
+            s = HttpUtil.get("https://raw.githubusercontent.com/lxflxf56/NovelAPI/master/src/main/resources/static/booklilst.json");
             List<BookSelectInfo> bookSelectInfos = JSON.parseArray(s, BookSelectInfo.class);
             patternMap=new TreeMap();
             for (BookSelectInfo book:bookSelectInfos){
@@ -42,7 +42,8 @@ public class NovelapiApplication {
             }
         } catch (IOException e) {
             //e.printStackTrace();
-            logger.error("e",e);
+            logger.error("初始化失败",e);
+            System.exit(1);
         }
 
     }
