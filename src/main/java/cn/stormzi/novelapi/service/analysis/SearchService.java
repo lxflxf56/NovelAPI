@@ -168,14 +168,15 @@ public class SearchService implements SearchAnalysisFacade, PatternMap {
         String str = s[i];
         if (isNum(str.charAt(0))) {
             //result.add(element.get(0).html());
-            Element element1 = element.get(str.charAt(0));
+            Element element1 = element.get(Integer.parseInt(str.charAt(0)+""));
             if (str.length() > 1) {// 0[attr]
-                str = str.substring(1, str.length());
+                str = str.substring(1);
                 String attr = element1.attr(str);
                 result.add(attr);
             }else {
                 result.add(element1.html());
             }
+            return;
         } else if (str.charAt(0) == '[') {
             String attr = element.attr(str);
             result.add(attr);

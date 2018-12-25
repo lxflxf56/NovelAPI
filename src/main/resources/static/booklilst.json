@@ -1866,7 +1866,7 @@
     "bookUpdateTime": "@.book_other span 4"
   },
   {
-    "bookLastChapterName": "tr .even a 0",
+    "bookLastChapterName": "@tr .even a 0",
     "detailBookDesc": "@p .book-intro 0",
     "chapters": "ul #chapterList .chapter li a",
     "detailBookName": ".book-title h1 0",
@@ -1879,14 +1879,14 @@
     "host": "http://www.shuqiba.com",
     "checked": "false",
     "searchUrl": "http://www.shuqiba.com/modules/article/search.php?searchkey=%s",
-    "bookUrl": "tr .odd a 0[href]",
+    "bookUrl": "@tr .odd a 0[href]",
     "searchEncoding": "gbk",
     "searchMoreHref": "unknow [href]",
     "order": "2147483647",
     "detailBookUpdateTime": "@p .book-stats b 4",
     "chapterName": "unknow",
-    "bookAuthor": "tr .odd 1",
-    "bookName": "tr .odd a 0",
+    "bookAuthor": "@tr .odd 1",
+    "bookName": "@tr .odd a 0",
     "chaptersReverse": "false",
     "detailChaptersUrl": ".book-link a 3[href]",
     "books": "table .grid tr:has(td)",
@@ -1895,7 +1895,7 @@
     "detailBookIcon": ".book-img img 0[src]",
     "searchMore": "#pagelink a",
     "detailBookLastChapterName": ".bintro .clear p a 0",
-    "bookUpdateTime": "tr .odd 2"
+    "bookUpdateTime": "@tr .odd 2"
   },
   {
     "bookLastChapterName": "@.result-game-item-info-tag a 0",
@@ -2062,7 +2062,7 @@
     "order": "2147483647"
   },
   {
-    "bookLastChapterName": "tr .even a 0",
+    "bookLastChapterName": "@tr .even a 0",
     "detailBookDesc": ".clearfixd 0",
     "chapters": "div .ddiv ul li a",
     "detailBookName": "@[property=og:novel:book_name] 0content",
@@ -2075,14 +2075,14 @@
     "host": "http://www.yibige.com",
     "checked": "false",
     "searchUrl": "http://www.yibige.com/modules/article/search.php?searchtype=articlename&searchkey=%s",
-    "bookUrl": "tr .odd a 0[href]",
+    "bookUrl": "@tr .odd a 0[href]",
     "searchEncoding": "gbk",
     "searchMoreHref": "unknow [href]",
     "order": "2147483647",
     "detailBookUpdateTime": "@[property=og:novel:update_time] 0content",
     "chapterName": "unknow",
-    "bookAuthor": "tr .odd 1",
-    "bookName": "tr .odd a 0",
+    "bookAuthor": "@tr .odd 1",
+    "bookName": "@tr .odd a 0",
     "chaptersReverse": "false",
     "detailChaptersUrl": "@ul .imgclass li a 0[href]",
     "books": "table .grid tr:has(td)",
@@ -2091,7 +2091,7 @@
     "detailBookIcon": "@[property=og:image] 0content",
     "searchMore": "#pagelink a .next",
     "detailBookLastChapterName": "@[property=og:novel:latest_chapter_name] 0content",
-    "bookUpdateTime": "tr .odd 2"
+    "bookUpdateTime": "@tr .odd 2"
   },
   {
     "bookLastChapterName": "@.result-game-item-info-tag a 0",
@@ -2152,7 +2152,7 @@
     "bookUpdateTime": "@.odd 2"
   },
   {
-    "bookLastChapterName": "tr .even a 0",
+    "bookLastChapterName": "@tr .even a 0",
     "detailBookDesc": ".bintro .clear p 0",
     "chapters": "td .dccss a",
     "detailBookName": ".btitle .clear (text) 0",
@@ -2165,14 +2165,14 @@
     "host": "http://www.bsl.la",
     "checked": "false",
     "searchUrl": "http://www.bsl.la/modules/article/search.php?searchtype=articlename&searchkey=%s",
-    "bookUrl": "tr .even a 0[href]",
+    "bookUrl": "@tr .even a 0[href]",
     "searchEncoding": "gbk",
     "searchMoreHref": "unknow [href]",
     "order": "2147483647",
     "detailBookUpdateTime": ".binfo .clear span 2",
     "chapterName": "unknow",
-    "bookAuthor": "tr .odd 1",
-    "bookName": "tr .odd a 0",
+    "bookAuthor": "@tr .odd 1",
+    "bookName": "@tr .odd a 0",
     "chaptersReverse": "false",
     "detailChaptersUrl": ".bstart .clear a 0[href]",
     "books": "table .grid tr:has(td)",
@@ -2181,7 +2181,7 @@
     "detailBookIcon": ".bimg img 0[src]",
     "searchMore": "#pagelink a",
     "detailBookLastChapterName": ".bintro .clear p a 0",
-    "bookUpdateTime": "tr .odd 2"
+    "bookUpdateTime": "@tr .odd 2"
   },
   {
     "bookLastChapterName": "@.search_r_info p a 2",
@@ -2295,7 +2295,7 @@
     "order": "2147483647"
   },
   {
-    "bookLastChapterName": "tr .even a 0",
+    "bookLastChapterName": "@tr .even a 0",
     "detailBookDesc": ".uc_cont 1",
     "chapters": "div .uclist dl dd a",
     "detailBookName": ".uc_cont h1 a 0",
@@ -2308,14 +2308,14 @@
     "host": "http://www.du7.cc",
     "checked": "false",
     "searchUrl": "http://www.du7.cc/modules/article/search.php?searchtype=articlename&searchkey=%s",
-    "bookUrl": "tr .odd a 0[href]",
+    "bookUrl": "@tr .odd a 0[href]",
     "searchEncoding": "gbk",
     "searchMoreHref": "unknow [href]",
     "order": "2147483647",
     "detailBookUpdateTime": ".uctitle span i 0",
     "chapterName": "unknow",
-    "bookAuthor": "tr .odd 1",
-    "bookName": "tr .odd a 0",
+    "bookAuthor": "@tr .odd 1",
+    "bookName": "@tr .odd a 0",
     "chaptersReverse": "false",
     "detailChaptersUrl": ".booklink a 0[href]",
     "books": "table .grid tr:has(td)",
@@ -2324,7 +2324,7 @@
     "detailBookIcon": ".bookcover img 0[src]",
     "searchMore": "#pagelink a .next",
     "detailBookLastChapterName": ".uctitle span a 0",
-    "bookUpdateTime": "tr .odd 2"
+    "bookUpdateTime": "@tr .odd 2"
   },
   {
     "bookLastChapterName": "@p .result-game-item-info-tag a 0",
@@ -2690,7 +2690,7 @@
     "bookUpdateTime": "@.odd 2"
   },
   {
-    "bookLastChapterName": "tr .even a 0",
+    "bookLastChapterName": "@tr .even a 0",
     "chapters": "div .ocon dl dd a",
     "detailBookName": "#content table tbody tbody tbody span 0",
     "indexUrl": "/",
@@ -2702,20 +2702,20 @@
     "host": "http://www.7zxs.com",
     "checked": "false",
     "searchUrl": "http://www.7zxs.com/modules/article/search.php?searchtype=1&searchkey=%s",
-    "bookUrl": "tr .odd a 0[href]",
+    "bookUrl": "@tr .odd a 0[href]",
     "searchEncoding": "gbk",
     "order": "2147483647",
     "detailBookUpdateTime": "@iv #content table td 8",
     "chapterName": "unknow",
-    "bookAuthor": "tr .odd 1",
-    "bookName": "tr .odd a 0",
+    "bookAuthor": "@tr .odd 1",
+    "bookName": "@tr .odd a 0",
     "chaptersReverse": "false",
     "detailChaptersUrl": "@ul .ulrow  li a 0[href]",
     "books": "table .grid tr:has(td)",
     "detailBookCategory": "@iv #content table td 4",
     "name": "7z小说网",
     "detailBookIcon": "#content tr td img 0[src]",
-    "bookUpdateTime": "tr .odd 2"
+    "bookUpdateTime": "@tr .odd 2"
   },
   {
     "bookLastChapterName": "@.col-xs-4 0",
@@ -3146,7 +3146,7 @@
     "bookUpdateTime": "@.result-game-item-info-tag span 5"
   },
   {
-    "bookLastChapterName": "tr .even a 0",
+    "bookLastChapterName": "@tr .even a 0",
     "detailBookDesc": "#bookintro p 0",
     "chapters": "div #readerlist ul li a",
     "detailBookName": ".booktitle h1 0",
@@ -3159,14 +3159,14 @@
     "host": "http://www.i7wx.com",
     "checked": "false",
     "searchUrl": "http://www.i7wx.com/modules/article/search.php?searchtype=articlename&searchkey=%s",
-    "bookUrl": "tr .odd a 0[href]",
+    "bookUrl": "@tr .odd a 0[href]",
     "searchEncoding": "gbk",
     "searchMoreHref": "unknow [href]",
     "order": "2147483647",
     "detailBookUpdateTime": ".new span 0",
     "chapterName": "unknow",
-    "bookAuthor": "tr .odd 1",
-    "bookName": "tr .odd a 0",
+    "bookAuthor": "@tr .odd 1",
+    "bookName": "@tr .odd a 0",
     "chaptersReverse": "false",
     "detailChaptersUrl": "#reader a 0[href]",
     "books": "table .grid tr:has(td)",
@@ -3175,7 +3175,7 @@
     "detailBookIcon": "#bookimg img 0[src]",
     "searchMore": "#pagelink a .next",
     "detailBookLastChapterName": ".new span a 0",
-    "bookUpdateTime": "tr .odd 2"
+    "bookUpdateTime": "@tr .odd 2"
   },
   {
     "bookLastChapterName": "@.even 0",
@@ -3323,7 +3323,7 @@
     "bookUpdateTime": "@.result-game-item-info-tag span 5"
   },
   {
-    "bookLastChapterName": "tr .even a 0",
+    "bookLastChapterName": "@tr .even a 0",
     "detailBookDesc": "#bookintro p 0",
     "chapters": "div #readerlist ul li a",
     "detailBookName": ".d_title h1 0",
@@ -3337,14 +3337,14 @@
     "host": "http://www.akxs6.com",
     "checked": "false",
     "searchUrl": "http://www.akxs6.com/modules/article/search.php?searchtype=articlename&searchkey=%s",
-    "bookUrl": "tr .odd a 0[href]",
+    "bookUrl": "@tr .odd a 0[href]",
     "searchEncoding": "gbk",
     "searchMoreHref": "unknow [href]",
     "order": "2147483647",
     "detailBookUpdateTime": "#keywords 0",
     "chapterName": "unknow",
-    "bookAuthor": "tr .odd 1",
-    "bookName": "tr .odd a 0",
+    "bookAuthor": "@tr .odd 1",
+    "bookName": "@tr .odd a 0",
     "chaptersReverse": "false",
     "detailChaptersUrl": "@li .li2 a 0[href]",
     "books": "table .grid tr:has(td)",
@@ -3353,7 +3353,7 @@
     "detailBookIcon": "#bookimg img 0[src]",
     "searchMore": "#pagelink a .next",
     "detailBookLastChapterName": "#newlist ul li a 0",
-    "bookUpdateTime": "tr .odd 2"
+    "bookUpdateTime": "@tr .odd 2"
   },
   {
     "bookLastChapterName": "@.result-game-item-info-tag a 0",
@@ -4649,13 +4649,13 @@
     "bookUpdateTime": ".item-pic p i 2"
   },
   {
-    "bookLastChapterName": "tr .col-md-6 .hidden-sm .hidden-xs a 0",
+    "bookLastChapterName": "@tr .col-md-6 .hidden-sm .hidden-xs a 0",
     "chapters": "ul .list-group li a",
     "chapterName": "unknow",
     "indexUrl": "/",
-    "bookAuthor": "tr .col-md-2 .col-sm-4 .col-xs-4 0",
+    "bookAuthor": "@tr .col-md-2 .col-sm-4 .col-xs-4 0",
     "type": "0",
-    "bookName": "tr .col-md-2 .col-sm-8 .col-xs-8 a 0",
+    "bookName": "@tr .col-md-2 .col-sm-8 .col-xs-8 a 0",
     "content": "#content 0",
     "enabled": "true",
     "chaptersReverse": "false",
@@ -4666,9 +4666,9 @@
     "checked": "false",
     "searchMore": "#pageFooter a",
     "searchUrl": "http://www.bookbl.com/search.php?search=%s",
-    "bookUrl": "tr .col-md-2 .col-sm-8 .col-xs-8 a 0[href]",
+    "bookUrl": "@tr .col-md-2 .col-sm-8 .col-xs-8 a 0[href]",
     "searchEncoding": "gbk",
-    "bookUpdateTime": "tr .col-md-2 .hidden-sm .hidden-xs 0",
+    "bookUpdateTime": "@tr .col-md-2 .hidden-sm .hidden-xs 0",
     "searchMoreHref": "@a 0[href]",
     "contentRemove": "[\"script\"]",
     "order": "2147483647"
@@ -5156,7 +5156,7 @@
     "bookUpdateTime": "@p .result-game-item-info-tag span 5"
   },
   {
-    "bookLastChapterName": "tr .even a 0",
+    "bookLastChapterName": "@tr .even a 0",
     "detailBookDesc": "@li #description1 0",
     "chapters": "div .novel_volume ul li a",
     "detailBookName": ".border h1 0",
@@ -5169,14 +5169,14 @@
     "host": "http://www.quanben.co",
     "checked": "false",
     "searchUrl": "http://www.quanben.co/modules/article/search.php?searchtype=articlename&searchkey=%s",
-    "bookUrl": "tr .odd a 0[href]",
+    "bookUrl": "@tr .odd a 0[href]",
     "searchEncoding": "gbk",
     "searchMoreHref": "unknow [href]",
     "contentRemove": "[\"div\"]",
     "order": "2147483647",
     "chapterName": "unknow",
-    "bookAuthor": "tr .odd 1",
-    "bookName": "tr .odd a 0",
+    "bookAuthor": "@tr .odd 1",
+    "bookName": "@tr .odd a 0",
     "chaptersReverse": "false",
     "detailChaptersUrl": ".Sum ul li a 1[href]",
     "books": "table .grid tr:has(td)",
@@ -5185,7 +5185,7 @@
     "detailBookIcon": ".novel_img img 0[src]",
     "searchMore": "#pagelink a .next",
     "detailBookLastChapterName": "@dl #vip dt a 0",
-    "bookUpdateTime": "tr .odd 2"
+    "bookUpdateTime": "@tr .odd 2"
   },
   {
     "bookLastChapterName": "@.result-game-item-info-tag a 0",
@@ -5490,7 +5490,7 @@
     "bookUpdateTime": "@.result-game-item-info-tag span 5"
   },
   {
-    "bookLastChapterName": "tr .even a 0",
+    "bookLastChapterName": "@tr .even a 0",
     "detailBookDesc": ".book_intro 0",
     "chapters": "div .bookUpdate .borderH .l dl dd a",
     "detailBookName": ".movieDetail center h2 0",
@@ -5503,14 +5503,14 @@
     "host": "http://www.neixiong888.com",
     "checked": "false",
     "searchUrl": "http://www.neixiong888.com/modules/article/search.php?searchtype=articlename&searchkey=%s",
-    "bookUrl": "tr .odd a 0[href]",
+    "bookUrl": "@tr .odd a 0[href]",
     "searchEncoding": "gbk",
     "contentRemove": "[\"script\",\"span\",\"p\",\"h2\",\"em\",\"b\"]",
     "order": "2147483647",
     "detailBookUpdateTime": ".movieDetail p span 4",
     "chapterName": "unknow",
-    "bookAuthor": "tr .odd 1",
-    "bookName": "tr .odd a 0",
+    "bookAuthor": "@tr .odd 1",
+    "bookName": "@tr .odd a 0",
     "chaptersReverse": "false",
     "detailChaptersUrl": ".movieDetail a 6[href]",
     "books": "table .grid tr:has(td)",
@@ -5518,7 +5518,7 @@
     "name": "内兄小说网",
     "detailBookIcon": ".moviePic img 0[src]",
     "detailBookLastChapterName": ".movieDetail p a 0",
-    "bookUpdateTime": "tr .odd 2"
+    "bookUpdateTime": "@tr .odd 2"
   },
   {
     "bookLastChapterName": "@.col-xs-2 span 0",
@@ -5779,7 +5779,7 @@
     "detailBookLastChapterName": "@h3 .chapter-title a 0"
   },
   {
-    "bookLastChapterName": "tr .even a 0",
+    "bookLastChapterName": "@tr .even a 0",
     "chapters": "table #at tbody td a",
     "detailBookName": "@dl #content h1 0",
     "indexUrl": "/",
@@ -5791,14 +5791,14 @@
     "host": "http://www.it259.com",
     "checked": "false",
     "searchUrl": "http://www.it259.com/modules/article/search.php?searchtype=articlename&searchkey=%s",
-    "bookUrl": "tr .even a 0[href]",
+    "bookUrl": "@tr .even a 0[href]",
     "searchEncoding": "gbk",
     "searchMoreHref": "unknow [href]",
     "order": "2147483647",
     "detailBookUpdateTime": "@dl #content dd div .fl table #at tr td 5",
     "chapterName": "unknow",
-    "bookAuthor": "tr .odd 1",
-    "bookName": "tr .odd a 0",
+    "bookAuthor": "@tr .odd 1",
+    "bookName": "@tr .odd a 0",
     "chaptersReverse": "false",
     "detailChaptersUrl": "#centerm  .bdsub  #content div .fl a .hst 0[href]",
     "books": "table .grid tr:has(td)",
@@ -5806,7 +5806,7 @@
     "name": "紫轩小说主吧",
     "detailBookIcon": "@dl #content dd div .fl img 0[src]",
     "searchMore": "#pagelink a",
-    "bookUpdateTime": "tr .odd 2"
+    "bookUpdateTime": "@tr .odd 2"
   },
   {
     "bookLastChapterName": "@.result-game-item-info-tag a 0",

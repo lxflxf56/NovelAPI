@@ -66,7 +66,7 @@ public class SearchServiceTest {
         String pattern1 = "@(\\d+)@";
         Pattern r = Pattern.compile(pattern1);
         s = s.replace("@@@", "unknow ")
-                .replace("@td", " tr")
+                .replace("@td", " @tr")
                 .replace("@div", "").replace("@span", "");
         Matcher m = r.matcher(s);
         if (m.find()) {
