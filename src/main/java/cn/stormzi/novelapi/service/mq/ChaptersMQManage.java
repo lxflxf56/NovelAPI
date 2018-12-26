@@ -53,7 +53,7 @@ public class ChaptersMQManage extends DisruptorFacade {
                 break;
             case Insert_Chapters:
                 UrlBean urlBean= (UrlBean) valueElement.getValue();
-                chaptersSerive.analysisContent(urlBean);
+                chaptersSerive.getContentFromWebsite(urlBean);
                 break;
             default:
                 break;

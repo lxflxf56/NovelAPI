@@ -37,9 +37,9 @@ public class PageController extends ControllerBase {
     @RequestMapping(value = "/index")
     @ResponseBody
     public String index(@RequestBody Map jsonMap) {
-        logger.debug("/page/index json:{}", jsonMap);
-        String baseurl = (String) jsonMap.get("baseurl");
-        UrlBean urlBean = urlService.extractLink(baseurl);
+        //logger.debug("/page/index json:{}", jsonMap);
+        String link = (String) jsonMap.get("link");
+        UrlBean urlBean = urlService.extractLink(link);
         if (null == urlBean) {
             return JSON.toJSONString(new ErrorCode("404", "请求链接不合法"));
         }

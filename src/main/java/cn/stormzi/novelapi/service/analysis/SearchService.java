@@ -7,7 +7,9 @@ import cn.stormzi.novelapi.facade.bean.analysis.BookSelectInfo;
 import cn.stormzi.novelapi.facade.bean.cache.ChaptersBean;
 import cn.stormzi.novelapi.facade.bean.cache.SearchBean;
 import cn.stormzi.novelapi.facade.cache.ESFacade;
+import cn.stormzi.novelapi.facade.scrapy.ChaptersProducerFacade;
 import cn.stormzi.novelapi.util.elasticsearch.QueryBuilder;
+import cn.stormzi.novelapi.util.http.HttpUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -32,6 +34,9 @@ import java.util.*;
 @Service("searchService")
 public class SearchService implements SearchAnalysisFacade, PatternMap {
 
+    @Autowired
+    ChaptersProducerFacade chaptersProducerService;
+
     private static Map<String, BookSelectInfo> patternMap;
 
     protected static final Logger logger = LoggerFactory.getLogger(SearchService.class);
@@ -46,7 +51,7 @@ public class SearchService implements SearchAnalysisFacade, PatternMap {
         List<String> result = new ArrayList();
 
         //BookName
-        itrElement(0,bookSelectInfo.getBookName().split(" "),document.body().children(),result);
+        HttpUtil.itrElement(0,bookSelectInfo.getBookName().split(" "),document.body().children(),result);
         int size=result.size();
         for (String s:result){
             ChaptersBean bean=new ChaptersBean();
@@ -56,18 +61,19 @@ public class SearchService implements SearchAnalysisFacade, PatternMap {
         result.clear();
 
         //BookAuthor
-        itrElement(0,bookSelectInfo.getBookAuthor().split(" "),document.body().children(),result);
+        HttpUtil.itrElement(0,bookSelectInfo.getBookAuthor().split(" "),document.body().children(),result);
         for (int i=0;i<size;i++){
             searchBean.getNovelItems().get(i).setAuthor(result.get(i));
         }
         result.clear();
 
         //BookUrl
-        itrElement(0,bookSelectInfo.getBookUrl().split(" "),document.body().children(),result);
+        HttpUtil.itrElement(0,bookSelectInfo.getBookUrl().split(" "),document.body().children(),result);
         for (int i=0;i<size;i++){
             searchBean.getNovelItems().get(i).setUrl(result.get(i));
         }
-        result.clear();
+        saveChapters(result);
+        //result.clear();
 
         return searchBean;
     }
@@ -137,6 +143,11 @@ public class SearchService implements SearchAnalysisFacade, PatternMap {
     }
 
     @Override
+    public void saveChapters(List list) {
+
+    }
+
+    @Override
     public synchronized void generateMap() {
         Map patternMap = NovelapiApplication.getPatternMap();
         Collection<BookSelectInfo> values = patternMap.values();
@@ -156,47 +167,5 @@ public class SearchService implements SearchAnalysisFacade, PatternMap {
         return patternMap;
     }
 
-    public static void itrElement(int i, String[] s, Elements element, List result) {
-        if (element.isEmpty()) {
-            return;
-        }
-        if (i >= s.length) {
-            result.add(element.get(0).html());
-            return;
-        }
 
-        String str = s[i];
-        if (isNum(str.charAt(0))) {
-            //result.add(element.get(0).html());
-            Element element1 = element.get(Integer.parseInt(str.charAt(0)+""));
-            if (str.length() > 1) {// 0[attr]
-                str = str.substring(1);
-                String attr = element1.attr(str);
-                result.add(attr);
-            }else {
-                result.add(element1.html());
-            }
-            return;
-        } else if (str.charAt(0) == '[') {
-            String attr = element.attr(str);
-            result.add(attr);
-        } else if (str.charAt(0) == '@') {
-            str = str.substring(1, str.length());
-            Elements select = element.select(str);
-            for (Element element1 : select) {
-                itrElement(i + 1, s, element1.children(), result);
-            }
-        } else {
-            itrElement(i + 1, s, element.select(str), result);
-        }
-
-    }
-
-
-    public static boolean isNum(char c) {
-        if (47 < c && c < 57) {
-            return true;
-        }
-        return false;
-    }
 }

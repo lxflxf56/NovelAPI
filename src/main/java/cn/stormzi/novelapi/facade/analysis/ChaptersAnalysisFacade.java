@@ -12,7 +12,7 @@ import cn.stormzi.novelapi.facade.bean.cache.ChaptersBean;
 
 
 public interface ChaptersAnalysisFacade {
-    ChaptersBean analysisContent(UrlBean bean);
+    ChaptersBean getContentFromWebsite(UrlBean bean);
     boolean saveContentIntoCache(ChaptersBean chaptersBean);
-    ChaptersBean getContentBeanFromCache(UrlBean urlBean);
+    String getContentBeanFromCache(UrlBean urlBean);
 }

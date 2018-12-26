@@ -34,8 +34,81 @@ public class BookSelectInfo {
             searchMore,//更多按钮
             searchMoreHref,//更多链接
             searchUrl,//搜索url
-            type;
+            type,
+            detailChaptersUrl,//章节页更多
+            detailBookDesc,//章节页描述
+            detailBookName,//章节页书名
+            detailBookAuthor,//章节页作者
+            detailBookUpdateTime,//更新时间
+            detailBookCategory,//标签
+            detailBookIcon,//icon
+            detailBookLastChapterName//最新章节名
+                    ;
 
+
+    public String getDetailBookDesc() {
+        return detailBookDesc;
+    }
+
+    public void setDetailBookDesc(String detailBookDesc) {
+        this.detailBookDesc = detailBookDesc;
+    }
+
+    public String getDetailBookName() {
+        return detailBookName;
+    }
+
+    public void setDetailBookName(String detailBookName) {
+        this.detailBookName = detailBookName;
+    }
+
+    public String getDetailBookAuthor() {
+        return detailBookAuthor;
+    }
+
+    public void setDetailBookAuthor(String detailBookAuthor) {
+        this.detailBookAuthor = detailBookAuthor;
+    }
+
+    public String getDetailBookUpdateTime() {
+        return detailBookUpdateTime;
+    }
+
+    public void setDetailBookUpdateTime(String detailBookUpdateTime) {
+        this.detailBookUpdateTime = detailBookUpdateTime;
+    }
+
+    public String getDetailBookCategory() {
+        return detailBookCategory;
+    }
+
+    public void setDetailBookCategory(String detailBookCategory) {
+        this.detailBookCategory = detailBookCategory;
+    }
+
+    public String getDetailBookIcon() {
+        return detailBookIcon;
+    }
+
+    public void setDetailBookIcon(String detailBookIcon) {
+        this.detailBookIcon = detailBookIcon;
+    }
+
+    public String getDetailBookLastChapterName() {
+        return detailBookLastChapterName;
+    }
+
+    public void setDetailBookLastChapterName(String detailBookLastChapterName) {
+        this.detailBookLastChapterName = detailBookLastChapterName;
+    }
+
+    public String getDetailChaptersUrl() {
+        return detailChaptersUrl;
+    }
+
+    public void setDetailChaptersUrl(String detailChaptersUrl) {
+        this.detailChaptersUrl = detailChaptersUrl;
+    }
 
     public String getBookAuthor() {
         return bookAuthor;

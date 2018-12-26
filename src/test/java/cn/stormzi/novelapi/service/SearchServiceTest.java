@@ -41,9 +41,9 @@ public class SearchServiceTest {
             Document document = Jsoup.connect(searchUrl).get();
             //String s1 = HttpUtil.get(searchUrl);
             //Document document = Jsoup.parse(s1,"gbk");
-            String[] s = "@tr .odd 1 ".split(" ");
+            String[] s = "@tr .odd a 0[href]".split(" ");
             List result = new ArrayList();
-            SearchService.itrElement(0, s, document.body().children(), result);
+            HttpUtil.itrElement(0, s, document.body().children(), result);
             System.out.println(result);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

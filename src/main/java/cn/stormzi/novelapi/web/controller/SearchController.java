@@ -29,8 +29,7 @@ public class SearchController extends ControllerBase {
     @Autowired
     SearchAnalysisFacade searchService;
 
-    @Autowired
-    ChaptersProducerFacade chaptersProducerService;
+
 
     @RequestMapping(value = "index")
     @ResponseBody
@@ -50,7 +49,7 @@ public class SearchController extends ControllerBase {
         } else {
             SearchBean searchBean = searchService.searchFromWebsiteByBookname(searchname, websitename);
             if (searchBean!=null){
-                chaptersProducerService.addQueue(searchBean.getNovelItems());
+                //chaptersProducerService.addQueue(searchBean.getNovelItems());
                 return JSON.toJSONString(searchBean);
             }
         }
