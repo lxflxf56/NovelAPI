@@ -61,7 +61,7 @@ public class ChaptersSerive implements ChaptersAnalysisFacade, PatternMap {
         chaptersBean.setChaptersTitle(new ArrayList<>());
         chaptersBean.setChaptersUrl(new ArrayList<>());
         String detailChaptersUrl = bookSelectInfo.getDetailChaptersUrl();
-        Future<ChaptersBean> submit = null;
+        /*Future<ChaptersBean> submit = null;
         if (detailChaptersUrl != null) {
             String detailLink = HttpUtil.itrElement(0, detailChaptersUrl.split(" "), document.body().children());
             submit = threadPool.submit(new OtherRequest(detailLink));
@@ -72,7 +72,7 @@ public class ChaptersSerive implements ChaptersAnalysisFacade, PatternMap {
 
         } else {
             //...
-        }
+        }*/
 
 
         return chaptersBean;

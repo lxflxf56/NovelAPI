@@ -35,6 +35,18 @@ public class ESService implements ESFacade {
 
     @Override
     public boolean exist(String index, String type, long id) {
+        String path = createPath(index, type, id + "");
+        Response head = null;
+        try {
+            head = ESUtil.head(path);
+            int statusCode = head.getStatusLine().getStatusCode();
+            if (200==statusCode){
+                return true;
+            }
+        } catch (IOException e) {
+            //e.printStackTrace();
+            logger.error("es请求错误");
+        }
         return false;
     }
 

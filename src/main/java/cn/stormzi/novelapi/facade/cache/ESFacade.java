@@ -6,7 +6,7 @@ import java.util.Map;
 
 public interface ESFacade {
 
-    boolean exist(String index, String type, long id);
+    boolean exist(String index, String type, long id) throws IOException;
     String select(String index, String type, long id) throws IOException;
     String select(String index, String type, String json) throws IOException;
     void bulk(String json);

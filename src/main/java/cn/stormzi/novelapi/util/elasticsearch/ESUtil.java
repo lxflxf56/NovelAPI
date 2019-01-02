@@ -38,6 +38,7 @@ public class ESUtil {
     }
     */
 
+
     public static RestClient generateRestClient(HttpHost[] httpHosts) {
         try {
             //配置可选参数
@@ -109,6 +110,8 @@ public class ESUtil {
         requestAsync(request, json, responseListener);
     }
 
+
+
     public static void postAsync(String path, Map map, ResponseListener responseListener) {
         Request request = new Request("post", path);
         requestAsync(request, map, responseListener);
@@ -148,6 +151,12 @@ public class ESUtil {
     @Deprecated
     public static Response get(String path) throws IOException {
         Response response = getRestClient().performRequest("GET", path);
+        return response;
+    }
+
+    @Deprecated
+    public static Response head(String path) throws IOException {
+        Response response = getRestClient().performRequest("HEAD", path);
         return response;
     }
 
